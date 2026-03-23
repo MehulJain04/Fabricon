@@ -306,11 +306,8 @@ ul {
 .hero-section {
     position: relative;
     height: 500px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://placehold.co/1920x600/2c3e50/ffffff?text=Premium+Textile+Marketplace');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax Check */
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.5));
+    /* Removed the hardcoded background image and let the interactive canvas shine */
     display: flex;
     justify-content: center;
     align-items: center;
