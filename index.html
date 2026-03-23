@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextileMarket - Premium Global Fabrics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="LOGO/Gemini_Generated_Image_d28pfqd28pfqd28p-removebg-preview.png" alt="Fabricon Logo" style="height: 42px; width: auto; max-width: 200px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06)); margin-right: 5px;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
+                        <span style="font-weight: 700; color: var(--primary-color); font-size: 1.35rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; text-transform: uppercase; line-height: 1;">FABRICON</span>
+                        <span style="font-size: 0.6rem; color: #95a5a6; font-family: 'Montserrat', sans-serif; letter-spacing: 4px; text-transform: uppercase; margin-top: 4px;">Premium Textiles</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="shop.html">Browse Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <div class="lang-toggle" onclick="toggleLanguage()">
+                    <span class="lang-option active" data-lang="en">EN</span>
+                    <span class="separator">|</span>
+                    <span class="lang-option" data-lang="hi">HI</span>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="login.html" class="auth-btn">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section"
+        style="height: 600px; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.6);"
+                data-en="World's Leading Textile Marketplace" data-hi="विश्व का अग्रणी कपड़ा बाजार">World's Leading
+                Textile Marketplace</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; color: #f1f1f1; max-width: 700px; margin-left: auto; margin-right: auto;"
+                data-en="Connecting global suppliers with premium quality buyers. Sourcing yarn, fabric, and raw materials made easy."
+                data-hi="वैश्विक आपूर्तिकर्ताओं को प्रीमियम गुणवत्ता वाले खरीदारों के साथ जोड़ना। धागा, कपड़ा और कच्चे माल की सोर्सिंग आसान हो गई है।">
+                Connecting global suppliers with premium quality buyers. Sourcing yarn, fabric, and raw materials made
+                easy.</p>
+            <a href="shop.html" class="cta-btn hero-btn" style="padding: 15px 40px; font-size: 1.2rem;">Start
+                Sourcing</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" style="padding: 80px 0; background-color: white;">
+        <div class="container">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center;">
+                <div class="stat-card"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                    <i class="fa-solid fa-industry"
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">50M+</h3>
+                    <p style="color: var(--text-light); font-weight: 500;">Tons of Yarn Traded / Year</p>
+                </div>
+                <div class="stat-card"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                    <i class="fa-solid fa-scroll"
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">120M+</h3>
+                    <p style="color: var(--text-light); font-weight: 500;">Meters of Fabric / Year</p>
+                </div>
+                <div class="stat-card"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                    <i class="fa-solid fa-users"
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">25k+</h3>
+                    <p style="color: var(--text-light); font-weight: 500;">Verified Global Suppliers</p>
+                </div>
+                <div class="stat-card"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                    <i class="fa-solid fa-globe"
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">40+</h3>
+                    <p style="color: var(--text-light); font-weight: 500;" data-en="Countries Served"
+                        data-hi="सेवा करने वाले देश">Countries Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="features-section" style="padding: 60px 0; background-color: var(--bg-color);">
+        <div class="container text-center">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="grid grid-3">
+                <div class="feature-card">
+                    <i class="fa-solid fa-check-circle feature-icon"></i>
+                    <h3 data-en="Variables Verified" data-hi="चर सत्यापित">Variables Verified</h3>
+                    <p data-en="Every supplier undergoes a strict 5-step verification process."
+                        data-hi="प्रत्येक आपूर्तिकर्ता एक सख्त 5-चरणीय सत्यापन प्रक्रिया से गुजरता है।">Every supplier
+                        undergoes a strict 5-step verification process.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-truck-fast feature-icon"></i>
+                    <h3 data-en="Global Logistics" data-hi="वैश्विक रसद">Global Logistics</h3>
+                    <p data-en="Seamless shipping integration with major global carriers."
+                        data-hi="प्रमुख वैश्विक वाहकों के साथ निर्बाध शिपिंग एकीकरण।">Seamless shipping integration with
+                        major global carriers.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved feature-icon"></i>
+                    <h3 data-en="Secure Payments" data-hi="सुरक्षित भुगतान">Secure Payments</h3>
+                    <p data-en="Escrow services ensure your funds are safe until delivery."
+                        data-hi="एस्क्रो सेवाएं सुनिश्चित करती हैं कि आपके फंड डिलीवरी तक सुरक्षित हैं।">Escrow services
+                        ensure your funds are safe until delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3 data-en="Join Our Textile Network" data-hi="हमारे टेक्सटाइल नेटवर्क से जुड़ें">Join Our Textile
+                    Network</h3>
+                <p data-en="Get the latest market trends and supplier updates directly to your inbox."
+                    data-hi="सीधे अपने इनबॉक्स में नवीनतम बाजार रुझान और आपूर्तिकर्ता अपडेट प्राप्त करें।">Get the
+                    latest market trends and supplier updates directly to your inbox.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!')">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" data-en="Subscribe" data-hi="सदस्यता लें">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p data-en="© 2024 TextileMarket. All rights reserved."
+                data-hi="© 2024 टेक्सटाइलमार्केट। सर्वाधिकार सुरक्षित।">© 2024 TextileMarket. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
+                <a href="terms.html" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a>
+                <a href="about.html" style="margin-left: 20px;">About Us</a>
+                <a href="contact.html" style="margin-left: 20px;">Contact</a>
+                <a href="faq.html" style="margin-left: 20px;">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

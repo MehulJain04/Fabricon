@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextileMarket - Browse Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="sticky-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="LOGO/Gemini_Generated_Image_d28pfqd28pfqd28p-removebg-preview.png" alt="Fabricon Logo" style="height: 42px; width: auto; max-width: 200px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06)); margin-right: 5px;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
+                        <span style="font-weight: 700; color: var(--primary-color); font-size: 1.35rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; text-transform: uppercase; line-height: 1;">FABRICON</span>
+                        <span style="font-size: 0.6rem; color: #95a5a6; font-family: 'Montserrat', sans-serif; letter-spacing: 4px; text-transform: uppercase; margin-top: 4px;">Premium Textiles</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="main-search" placeholder="Search for yarn, fabric, or suppliers..."
+                    data-en-placeholder="Search for yarn, fabric, or suppliers..."
+                    data-hi-placeholder="धागा, कपड़ा या आपूर्तिकर्ताओं की खोज करें...">
+                <button type="button"><i class="fa-solid fa-search"></i></button>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="shop.html" class="active">Browse Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <div class="lang-toggle" onclick="toggleLanguage()">
+                    <span class="lang-option active" data-lang="en">EN</span>
+                    <span class="separator">|</span>
+                    <span class="lang-option" data-lang="hi">HI</span>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="login.html" class="auth-btn">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3 data-en="Filters" data-hi="फिल्टर">Filters</h3>
+                <button id="clear-filters-btn" class="clear-btn" onclick="clearFilters()" data-en="Clear All"
+                    data-hi="सभी साफ करें">Clear All</button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4 data-en="Material" data-hi="सामग्री">Material</h4>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="material" value="cotton"> <span data-en="Cotton"
+                            data-hi="कपास">Cotton</span></label>
+                    <label><input type="checkbox" name="material" value="silk"> <span data-en="Silk"
+                            data-hi="रेशम">Silk</span></label>
+                    <label><input type="checkbox" name="material" value="wool"> <span data-en="Wool"
+                            data-hi="ऊन">Wool</span></label>
+                    <label><input type="checkbox" name="material" value="linen"> <span data-en="Linen"
+                            data-hi="लिनन">Linen</span></label>
+                    <label><input type="checkbox" name="material" value="synthetic"> <span data-en="Synthetic"
+                            data-hi="सिंथेटिक">Synthetic</span></label>
+                    <label><input type="checkbox" name="material" value="bamboo"> <span data-en="Bamboo"
+                            data-hi="बांस">Bamboo</span></label>
+                    <label><input type="checkbox" name="material" value="jute"> <span data-en="Jute"
+                            data-hi="जूट">Jute</span></label>
+                </div>
+            </div>
+
+            <!-- Region Filter -->
+            <div class="filter-group">
+                <h4 data-en="Region" data-hi="क्षेत्र">Region</h4>
+                <select id="region-filter">
+                    <option value="" data-en="All Regions" data-hi="सभी क्षेत्र">All Regions</option>
+                    <option value="india" data-en="India" data-hi="भारत">India</option>
+                    <option value="china" data-en="China" data-hi="चीन">China</option>
+                    <option value="vietnam" data-en="Vietnam" data-hi="वियतनाम">Vietnam</option>
+                    <option value="turkey" data-en="Turkey" data-hi="तुर्की">Turkey</option>
+                </select>
+            </div>
+
+            <!-- MOQ Slider -->
+            <div class="filter-group">
+                <h4 data-en="Max MOQ" data-hi="अधिकतम MOQ">Max MOQ</h4>
+                <input type="range" id="moq-slider" min="0" max="10000" step="100" value="5000">
+                <p><span data-en="Up to" data-hi="तक">Up to</span>: <span id="moq-val">5000</span> units</p>
+            </div>
+
+            <!-- Certification -->
+            <div class="filter-group">
+                <h4 data-en="Min Rating" data-hi="न्यूनतम रेटिंग">Min Rating</h4>
+                <div class="radio-group">
+                    <label><input type="radio" name="rating" value="4"> 4 Stars & up</label>
+                    <label><input type="radio" name="rating" value="3"> 3 Stars & up</label>
+                    <label><input type="radio" name="rating" value="all" checked> All</label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Listing -->
+        <main class="content-area">
+            <div class="results-header">
+                <div class="search-results-summary">
+                    <p>Showing Results</p>
+                </div>
+                <div class="sort-options">
+                    <label for="sort-select" data-en="Sort by" data-hi="क्रमबद्ध करें">Sort by:</label>
+                    <select id="sort-select">
+                        <option value="relevance" data-en="Relevance" data-hi="प्रासंगिकता">Relevance</option>
+                        <option value="price-low" data-en="Price: Low to High" data-hi="कीमत: कम से ज्यादा">Price: Low
+                            to High</option>
+                        <option value="price-high" data-en="Price: High to Low" data-hi="कीमत: ज्यादा से कम">Price: High
+                            to Low</option>
+                        <option value="moq-low" data-en="MOQ: Low to High" data-hi="MOQ: कम से ज्यादा">MOQ: Low to High
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product Grid (Populated by JS) -->
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be injected here by script.js -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination-controls">
+                <!-- Pagination will be injected here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeContactModal()">&times;</button>
+            <div class="modal-header">
+                <h3 data-en="Contact Supplier" data-hi="आपूर्तिकर्ता से संपर्क करें">Contact Supplier</h3>
+                <p id="modal-product-title" class="modal-subtitle"></p>
+            </div>
+            <div class="modal-body">
+                <form id="contact-form"
+                    onsubmit="event.preventDefault(); document.getElementById('contact-form').classList.add('hidden'); document.getElementById('contact-success').classList.remove('hidden');">
+                    <div class="form-group">
+                        <label for="c-name" data-en="Your Name" data-hi="आपका नाम">Your Name</label>
+                        <input type="text" id="c-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-email" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
+                        <input type="email" id="c-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-phone" data-en="Phone Number" data-hi="फ़ोन नंबर">Phone Number</label>
+                        <input type="tel" id="c-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="c-message" data-en="Message" data-hi="संदेश">Message</label>
+                        <textarea id="c-message" rows="4" required placeholder="I am interested in this product..."
+                            data-en-placeholder="I am interested in this product..."
+                            data-hi-placeholder="मैं इस उत्पाद में रुचि रखता हूं..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" data-en="Send Inquiry" data-hi="पूछताछ भेजें">Send
+                        Inquiry</button>
+                </form>
+                <div id="contact-success" class="success-message hidden">
+                    <i class="fa-solid fa-check-circle" style="color: green; font-size: 3rem; margin-bottom: 20px;"></i>
+                    <p data-en="Inquiry Sent Successfully!" data-hi="पूछताछ सफलतापूर्वक भेजी गई!">Inquiry Sent
+                        Successfully!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p data-en="© 2024 TextileMarket. All rights reserved."
+                data-hi="© 2024 टेक्सटाइलमार्केट। सर्वाधिकार सुरक्षित।">© 2024 TextileMarket. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
+                <a href="terms.html" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a>
+                <a href="about.html" style="margin-left: 20px;">About Us</a>
+                <a href="contact.html" style="margin-left: 20px;">Contact</a>
+                <a href="faq.html" style="margin-left: 20px;">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

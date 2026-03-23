@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TextileMarket</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="lang-en">
+
+    <!-- Header -->
+    <header class="sticky-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="LOGO/Gemini_Generated_Image_d28pfqd28pfqd28p-removebg-preview.png" alt="Fabricon Logo" style="height: 42px; width: auto; max-width: 200px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06)); margin-right: 5px;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
+                        <span style="font-weight: 700; color: var(--primary-color); font-size: 1.35rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; text-transform: uppercase; line-height: 1;">FABRICON</span>
+                        <span style="font-size: 0.6rem; color: #95a5a6; font-family: 'Montserrat', sans-serif; letter-spacing: 4px; text-transform: uppercase; margin-top: 4px;">Premium Textiles</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Browse Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-layout" style="display: block; max-width: 600px; margin: 40px auto;">
+        <div class="auth-container">
+            <h2 class="auth-title" data-en="Welcome Back" data-hi="वापसी पर स्वागत है">Welcome Back</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" data-en="Password" data-hi="पासवर्ड">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="submit-btn" data-en="Sign In" data-hi="साइन इन करें">Sign In</button>
+            </form>
+            <div class="form-link">
+                <span data-en="New to TextileMarket?" data-hi="टेक्सटाइलमार्केट में नए हैं?">New to
+                    TextileMarket?</span>
+                <a href="register.html" data-en="Create Account" data-hi="खाता बनाएं">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p data-en="© 2024 TextileMarket. All rights reserved."
+                data-hi="© 2024 टेक्सटाइलमार्केट। सर्वाधिकार सुरक्षित।">© 2024 TextileMarket. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
+                <a href="#" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <div id="toast-container"></div>
+</body>
+
+</html>

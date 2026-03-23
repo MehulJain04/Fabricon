@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - TextileMarket</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cart-table th,
+        .cart-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-table th {
+            background-color: #f9f9f9;
+            font-weight: 600;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .qty-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            color: #e74c3c;
+            cursor: pointer;
+        }
+
+        .cart-summary {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            max-width: 400px;
+            margin-left: auto;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .total-row {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkout-btn:hover {
+            background-color: #34495e;
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <!-- Header -->
+    <header class="sticky-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="LOGO/Gemini_Generated_Image_d28pfqd28pfqd28p-removebg-preview.png" alt="Fabricon Logo" style="height: 42px; width: auto; max-width: 200px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06)); margin-right: 5px;">
+                    <div style="display: flex; flex-direction: column; justify-content: center; margin-left: 10px;">
+                        <span style="font-weight: 700; color: var(--primary-color); font-size: 1.35rem; font-family: 'Playfair Display', serif; letter-spacing: 2px; text-transform: uppercase; line-height: 1;">FABRICON</span>
+                        <span style="font-size: 0.6rem; color: #95a5a6; font-family: 'Montserrat', sans-serif; letter-spacing: 4px; text-transform: uppercase; margin-top: 4px;">Premium Textiles</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Browse Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h2 data-en="Shopping Cart" data-hi="शॉपिंग कार्ट">Shopping Cart</h2>
+        </div>
+    </div>
+
+    <div class="container" style="margin-bottom: 60px;">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th data-en="Product" data-hi="उत्पाद">Product</th>
+                    <th data-en="Price" data-hi="मूल्य">Price</th>
+                    <th data-en="Quantity" data-hi="मात्रा">Quantity</th>
+                    <th data-en="Total" data-hi="कुल">Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cart-tbody">
+                <!-- Dynamically populated by JS -->
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <h3 style="margin-bottom: 20px;">Order Summary</h3>
+            <div class="summary-row">
+                <span data-en="Subtotal" data-hi="उपयोगकर्ता">Subtotal</span>
+                <span id="cart-subtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span data-en="Tax (Estimated)" data-hi="कर (अनुमानित)">Tax (Estimated)</span>
+                <span id="cart-tax">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span data-en="Shipping" data-hi="शिपिंग">Shipping</span>
+                <span>TBD</span>
+            </div>
+            <div class="summary-row total-row">
+                <span data-en="Total" data-hi="कुल">Total</span>
+                <span id="cart-total">₹0</span>
+            </div>
+            <button onclick="window.location.href='checkout.html'" class="checkout-btn" data-en="Proceed to Checkout"
+                data-hi="चेकआउट के लिए आगे बढ़ें">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p data-en="© 2024 TextileMarket. All rights reserved."
+                data-hi="© 2024 टेक्सटाइलमार्केट। सर्वाधिकार सुरक्षित।">© 2024 TextileMarket. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
+                <a href="#" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <div id="toast-container"></div>
+</body>
+
+</html>
