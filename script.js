@@ -660,7 +660,16 @@ function attachDynamicInteractions() {
 
 // --- Cart Logic ---
 function getCart() { return JSON.parse(localStorage.getItem('cart') || '[]'); }
-function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
+function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); updateCartBadge(); }
+
+function updateCartBadge() {
+    const cart = getCart();
+    const totalItems = cart.length;
+    document.querySelectorAll('.cart-count').forEach(el => {
+        el.textContent = totalItems;
+        el.style.display = totalItems > 0 ? 'inline-flex' : 'none';
+    });
+}
 
 function addToCart(product, qty = null) {
     const defaultQty = qty !== null ? qty : product.moq;
@@ -742,9 +751,229 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('cart-tbody')) {
         renderCartPage();
     }
+    if (document.getElementById('checkout-items')) {
+        renderCheckoutPage();
+    }
 });
+
+function renderCheckoutPage() {
+    const container = document.getElementById('checkout-items');
+    if (!container) return;
+    
+    const cart = getCart();
+    
+    if (cart.length === 0) {
+        container.innerHTML = '<p style="color: #666; text-align: center; padding: 20px;">Your cart is empty. <a href="shop.html" style="color: var(--accent-color); font-weight: 600;">Browse Products</a></p>';
+        document.getElementById('checkout-subtotal').textContent = '₹0';
+        document.getElementById('checkout-tax').textContent = '₹0';
+        document.getElementById('checkout-total').textContent = '₹0';
+        return;
+    }
+    
+    let subtotal = 0;
+    let html = '';
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        html += `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                <span style="flex: 1;">${item.title} x ${item.qty}</span>
+                <span style="font-weight: 600;">₹${itemTotal.toLocaleString('en-IN')}</span>
+            </div>`;
+    });
+    
+    container.innerHTML = html;
+    
+    const tax = subtotal * 0.18;
+    const total = subtotal + tax;
+    
+    document.getElementById('checkout-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+    document.getElementById('checkout-tax').textContent = `₹${tax.toLocaleString('en-IN')}`;
+    document.getElementById('checkout-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+}
 
 // Call on load
 document.addEventListener('DOMContentLoaded', () => {
     initInteractiveUI();
+    updateCartBadge();
+    
+    // --- New 3D & Interactive UI Enhancements --- //
+    
+    // 1. Scroll Reveal Observer
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+    
+    // 2. 3D Mouse Parallax Tilt for Hero Section
+    const heroSection = document.querySelector('.hero-section');
+    const heroContent = document.getElementById('hero-content');
+    
+    if (heroSection && heroContent) {
+        heroSection.addEventListener('mousemove', (e) => {
+            // Calculate mouse position relative to center of hero section
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate tilt degrees (max 15 degrees)
+            const tiltX = ((y - centerY) / centerY) * -15; 
+            const tiltY = ((x - centerX) / centerX) * 15;
+            
+            heroContent.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+            heroContent.style.transition = 'none'; // Snappy follow
+        });
+        
+        // Reset tilt when mouse leaves
+        heroSection.addEventListener('mouseleave', () => {
+            heroContent.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+            heroContent.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'; // Smooth return
+        });
+        
+        // Add entry transition
+        heroContent.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+    }
+
+    // --- Hero Canvas Animation --- //
+    const heroCanvas = document.getElementById('hero-canvas');
+    if (heroCanvas) {
+        const hCtx = heroCanvas.getContext('2d');
+        const heroSec = document.getElementById('hero-section');
+        let hW, hH;
+        let heroMouseX = 0, heroMouseY = 0;
+
+        function resizeHeroCanvas() {
+            const rect = heroSec.getBoundingClientRect();
+            hW = rect.width;
+            hH = rect.height;
+            heroCanvas.width = hW * window.devicePixelRatio;
+            heroCanvas.height = hH * window.devicePixelRatio;
+            hCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        window.addEventListener('resize', resizeHeroCanvas);
+        resizeHeroCanvas();
+
+        heroSec.addEventListener('mousemove', (e) => {
+            const rect = heroSec.getBoundingClientRect();
+            heroMouseX = e.clientX - rect.left;
+            heroMouseY = e.clientY - rect.top;
+        });
+
+        // Floating orbs
+        const orbs = [];
+        const orbCount = 80;
+        const orbColors = [
+            'rgba(212, 175, 55, 0.6)',   // gold
+            'rgba(255, 255, 255, 0.4)',   // white
+            'rgba(100, 200, 255, 0.3)',   // cyan
+            'rgba(212, 175, 55, 0.3)',    // faint gold
+            'rgba(180, 140, 255, 0.25)',  // lavender
+        ];
+
+        for (let i = 0; i < orbCount; i++) {
+            orbs.push({
+                x: Math.random() * 2000,
+                y: Math.random() * 800,
+                r: Math.random() * 3 + 1,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.4,
+                color: orbColors[Math.floor(Math.random() * orbColors.length)],
+                pulse: Math.random() * Math.PI * 2, // phase offset
+            });
+        }
+
+        function drawHeroCanvas() {
+            hCtx.clearRect(0, 0, hW, hH);
+
+            // Dark base gradient
+            const bgGrad = hCtx.createLinearGradient(0, 0, hW, hH);
+            bgGrad.addColorStop(0, '#1a2a3a');
+            bgGrad.addColorStop(0.5, '#2c3e50');
+            bgGrad.addColorStop(1, '#1a2535');
+            hCtx.fillStyle = bgGrad;
+            hCtx.fillRect(0, 0, hW, hH);
+
+            // Mouse-tracking radial glow
+            const glowGrad = hCtx.createRadialGradient(heroMouseX, heroMouseY, 0, heroMouseX, heroMouseY, 300);
+            glowGrad.addColorStop(0, 'rgba(212, 175, 55, 0.15)');
+            glowGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.05)');
+            glowGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            hCtx.fillStyle = glowGrad;
+            hCtx.fillRect(0, 0, hW, hH);
+
+            const time = Date.now() * 0.001;
+
+            // Draw connection lines between close orbs
+            hCtx.lineWidth = 0.5;
+            for (let i = 0; i < orbs.length; i++) {
+                for (let j = i + 1; j < orbs.length; j++) {
+                    const dx = orbs[i].x - orbs[j].x;
+                    const dy = orbs[i].y - orbs[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        const alpha = (1 - dist / 100) * 0.15;
+                        hCtx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
+                        hCtx.beginPath();
+                        hCtx.moveTo(orbs[i].x, orbs[i].y);
+                        hCtx.lineTo(orbs[j].x, orbs[j].y);
+                        hCtx.stroke();
+                    }
+                }
+            }
+
+            // Draw and update orbs
+            orbs.forEach(orb => {
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+
+                // Wrap around
+                if (orb.x < -10) orb.x = hW + 10;
+                if (orb.x > hW + 10) orb.x = -10;
+                if (orb.y < -10) orb.y = hH + 10;
+                if (orb.y > hH + 10) orb.y = -10;
+
+                // Mouse interaction: gentle repel
+                const dxm = orb.x - heroMouseX;
+                const dym = orb.y - heroMouseY;
+                const distM = Math.sqrt(dxm * dxm + dym * dym);
+                if (distM < 150) {
+                    orb.x += (dxm / distM) * 0.8;
+                    orb.y += (dym / distM) * 0.8;
+                }
+
+                // Pulsing radius
+                const pulseFactor = 1 + Math.sin(time * 2 + orb.pulse) * 0.3;
+                const drawR = orb.r * pulseFactor;
+
+                // Glow halo
+                const haloGrad = hCtx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, drawR * 4);
+                haloGrad.addColorStop(0, orb.color);
+                haloGrad.addColorStop(1, 'rgba(0,0,0,0)');
+                hCtx.fillStyle = haloGrad;
+                hCtx.beginPath();
+                hCtx.arc(orb.x, orb.y, drawR * 4, 0, Math.PI * 2);
+                hCtx.fill();
+
+                // Solid core
+                hCtx.fillStyle = orb.color;
+                hCtx.beginPath();
+                hCtx.arc(orb.x, orb.y, drawR, 0, Math.PI * 2);
+                hCtx.fill();
+            });
+
+            requestAnimationFrame(drawHeroCanvas);
+        }
+        drawHeroCanvas();
+    }
 });

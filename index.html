@@ -46,18 +46,22 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section"
-        style="height: 600px; display: flex; align-items: center; justify-content: center; text-align: center;">
-        <div class="container">
-            <h1 style="font-size: 3.5rem; margin-bottom: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.6);"
+    <section class="hero-section" id="hero-section"
+        style="height: 600px; display: flex; align-items: center; justify-content: center; text-align: center; perspective: 1000px; position: relative; overflow: hidden;">
+        <!-- Dedicated Hero Animated Canvas -->
+        <canvas id="hero-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></canvas>
+        <!-- Gradient overlay for readability -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, rgba(44,62,80,0.3) 0%, rgba(44,62,80,0.85) 70%); z-index: 1;"></div>
+        <div class="container" id="hero-content" style="transition: transform 0.1s; transform-style: preserve-3d; position: relative; z-index: 2;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.5); transform: translateZ(50px);"
                 data-en="World's Leading Hosiery Marketplace" data-hi="विश्व का अग्रणी होज़री बाज़ार">World's Leading
                 Hosiery Marketplace</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 40px; color: #f1f1f1; max-width: 700px; margin-left: auto; margin-right: auto;"
+            <p style="font-size: 1.2rem; margin-bottom: 40px; color: #f1f1f1; max-width: 700px; margin-left: auto; margin-right: auto; transform: translateZ(30px);"
                 data-en="Connecting global suppliers with premium quality buyers. Sourcing pairs, hosiery, and raw materials made easy."
                 data-hi="वैश्विक आपूर्तिकर्ताओं को प्रीमियम गुणवत्ता वाले खरीदारों के साथ जोड़ना। मोज़े, होज़री और कच्चे माल की सोर्सिंग आसान हो गई है।">
                 Connecting global suppliers with premium quality buyers. Sourcing pairs, hosiery, and raw materials made
                 easy.</p>
-            <a href="shop.html" class="cta-btn hero-btn" style="padding: 15px 40px; font-size: 1.2rem;">Start
+            <a href="shop.html" class="cta-btn hero-btn" style="padding: 15px 40px; font-size: 1.2rem; transform: translateZ(40px);">Start
                 Sourcing</a>
         </div>
     </section>
@@ -67,33 +71,33 @@
         <div class="container">
             <div
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center;">
-                <div class="stat-card"
-                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                <div class="stat-card reveal"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); transform-style: preserve-3d;">
                     <i class="fa-solid fa-industry"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">50M+</h3>
-                    <p style="color: var(--text-light); font-weight: 500;">Millions of Pairs Traded / Year</p>
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; transform: translateZ(20px);"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; transform: translateZ(30px);">50M+</h3>
+                    <p style="color: var(--text-light); font-weight: 500; transform: translateZ(10px);">Millions of Pairs Traded / Year</p>
                 </div>
-                <div class="stat-card"
-                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                <div class="stat-card reveal"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); transform-style: preserve-3d;" style="transition-delay: 0.1s;">
                     <i class="fa-solid fa-scroll"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">120M+</h3>
-                    <p style="color: var(--text-light); font-weight: 500;">Pairs of Hosiery / Year</p>
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; transform: translateZ(20px);"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; transform: translateZ(30px);">120M+</h3>
+                    <p style="color: var(--text-light); font-weight: 500; transform: translateZ(10px);">Pairs of Hosiery / Year</p>
                 </div>
-                <div class="stat-card"
-                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                <div class="stat-card reveal"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); transform-style: preserve-3d;" style="transition-delay: 0.2s;">
                     <i class="fa-solid fa-users"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">25k+</h3>
-                    <p style="color: var(--text-light); font-weight: 500;">Verified Global Suppliers</p>
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; transform: translateZ(20px);"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; transform: translateZ(30px);">25k+</h3>
+                    <p style="color: var(--text-light); font-weight: 500; transform: translateZ(10px);">Verified Global Suppliers</p>
                 </div>
-                <div class="stat-card"
-                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: var(--bg-color);">
+                <div class="stat-card reveal"
+                    style="padding: 30px; border-radius: 12px; box-shadow: var(--shadow-sm); background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); transform-style: preserve-3d;" style="transition-delay: 0.3s;">
                     <i class="fa-solid fa-globe"
-                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px;">40+</h3>
-                    <p style="color: var(--text-light); font-weight: 500;" data-en="Countries Served"
+                        style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; transform: translateZ(20px);"></i>
+                    <h3 style="font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; transform: translateZ(30px);">40+</h3>
+                    <p style="color: var(--text-light); font-weight: 500; transform: translateZ(10px);" data-en="Countries Served"
                         data-hi="सेवा करने वाले देश">Countries Served</p>
                 </div>
             </div>
@@ -105,25 +109,25 @@
         <div class="container text-center">
             <h2 class="section-title">Why Choose Us?</h2>
             <div class="grid grid-3">
-                <div class="feature-card">
-                    <i class="fa-solid fa-check-circle feature-icon"></i>
-                    <h3 data-en="Variables Verified" data-hi="चर सत्यापित">Variables Verified</h3>
+                <div class="feature-card reveal" style="padding: 30px; border-radius: 12px; transform-style: preserve-3d; transition: all 0.3s ease; box-shadow: var(--shadow-sm); background: white;">
+                    <i class="fa-solid fa-check-circle feature-icon" style="transform: translateZ(20px);"></i>
+                    <h3 data-en="Variables Verified" data-hi="चर सत्यापित" style="transform: translateZ(30px);">Variables Verified</h3>
                     <p data-en="Every supplier undergoes a strict 5-step verification process."
-                        data-hi="प्रत्येक आपूर्तिकर्ता एक सख्त 5-चरणीय सत्यापन प्रक्रिया से गुजरता है।">Every supplier
+                        data-hi="प्रत्येक आपूर्तिकर्ता एक सख्त 5-चरणीय सत्यापन प्रक्रिया से गुजरता है।" style="transform: translateZ(10px);">Every supplier
                         undergoes a strict 5-step verification process.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-truck-fast feature-icon"></i>
-                    <h3 data-en="Global Logistics" data-hi="वैश्विक रसद">Global Logistics</h3>
+                <div class="feature-card reveal" style="padding: 30px; border-radius: 12px; transform-style: preserve-3d; transition: all 0.3s ease; box-shadow: var(--shadow-sm); background: white; transition-delay: 0.1s;">
+                    <i class="fa-solid fa-truck-fast feature-icon" style="transform: translateZ(20px);"></i>
+                    <h3 data-en="Global Logistics" data-hi="वैश्विक रसद" style="transform: translateZ(30px);">Global Logistics</h3>
                     <p data-en="Seamless shipping integration with major global carriers."
-                        data-hi="प्रमुख वैश्विक वाहकों के साथ निर्बाध शिपिंग एकीकरण।">Seamless shipping integration with
+                        data-hi="प्रमुख वैश्विक वाहकों के साथ निर्बाध शिपिंग एकीकरण।" style="transform: translateZ(10px);">Seamless shipping integration with
                         major global carriers.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fa-solid fa-shield-halved feature-icon"></i>
-                    <h3 data-en="Secure Payments" data-hi="सुरक्षित भुगतान">Secure Payments</h3>
+                <div class="feature-card reveal" style="padding: 30px; border-radius: 12px; transform-style: preserve-3d; transition: all 0.3s ease; box-shadow: var(--shadow-sm); background: white; transition-delay: 0.2s;">
+                    <i class="fa-solid fa-shield-halved feature-icon" style="transform: translateZ(20px);"></i>
+                    <h3 data-en="Secure Payments" data-hi="सुरक्षित भुगतान" style="transform: translateZ(30px);">Secure Payments</h3>
                     <p data-en="Escrow services ensure your funds are safe until delivery."
-                        data-hi="एस्क्रो सेवाएं सुनिश्चित करती हैं कि आपके फंड डिलीवरी तक सुरक्षित हैं।">Escrow services
+                        data-hi="एस्क्रो सेवाएं सुनिश्चित करती हैं कि आपके फंड डिलीवरी तक सुरक्षित हैं।" style="transform: translateZ(10px);">Escrow services
                         ensure your funds are safe until delivery.</p>
                 </div>
             </div>
@@ -155,9 +159,9 @@
             <div class="footer-links">
                 <a href="privacy.html" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
                 <a href="terms.html" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a>
-                <a href="about.html" style="margin-left: 20px;">About Us</a>
-                <a href="contact.html" style="margin-left: 20px;">Contact</a>
-                <a href="faq.html" style="margin-left: 20px;">FAQ</a>
+                <a href="about.html" style="margin-left: 20px;" data-en="About Us" data-hi="हमारे बारे में">About Us</a>
+                <a href="contact.html" style="margin-left: 20px;" data-en="Contact" data-hi="संपर्क करें">Contact</a>
+                <a href="faq.html" style="margin-left: 20px;" data-en="FAQ" data-hi="अक्सर पूछे जाने वाले प्रश्न">FAQ</a>
             </div>
         </div>
     </footer>
