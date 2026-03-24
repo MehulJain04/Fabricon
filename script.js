@@ -44,6 +44,36 @@ const productsData = [
     { id: 36, title: 'Pique Polo Ankle Socks', titleHi: 'पिक पोलो एंकल मोज़े', desc: 'Waffle weave cotton sports socks.', descHi: 'वफ़ल बुनाई कॉटन स्पोर्ट्स मोज़े।', material: 'cotton', region: 'vietnam', moq: 1000, cert: 'iso', rating: 4.4, price: 120, unit: 'pairs', img: 'https://placehold.co/400x300/e3f2fd/1565c0?text=Pique+Socks' },
 ];
 
+// Map the 17 custom AI generated images to the first 17 items. For the remaining 19 items, use a unique placeholder image per item.
+const customImages = {
+    1: 'images/organic_cotton_socks_1774350137161.png',
+    2: 'images/silk_pantyhose_1774350153814.png',
+    3: 'images/poly_tights_1774350169114.png',
+    4: 'images/woolen_socks_1774350188032.png',
+    5: 'images/bamboo_anklets_1774350206125.png',
+    6: 'images/athletic_socks_1774350224989.png',
+    7: 'images/microfiber_tights_1774350786725.png',
+    8: 'images/nylon_stockings_1774350803328.png',
+    9: 'images/merino_kneehighs_1774350819651.png',
+    10: 'images/sport_leggings_1774350834452.png',
+    11: 'images/jute_socks_1774350872165.png',
+    12: 'images/lace_thigh_highs_1774350890375.png',
+    13: 'images/thermal_socks_1774350906079.png',
+    14: 'images/sheer_socks_1774350925271.png',
+    15: 'images/velvet_tights_1774350954655.png',
+    16: 'images/hemp_footcovers_1774350975283.png',
+    17: 'images/mesh_anklets_1774350997657.png'
+};
+
+productsData.forEach(p => {
+    if (customImages[p.id]) {
+        p.img = customImages[p.id];
+    } else {
+        // Fallback to high-quality stock photography via loremflickr using consistent locks
+        p.img = `https://loremflickr.com/400/300/socks,fashion,apparel?lock=${p.id + 100}`;
+    }
+});
+
 let filteredProducts = [...productsData];
 let currentPage = 1;
 const ITEMS_PER_PAGE = 12;
