@@ -77,7 +77,7 @@ productsData.forEach(p => {
 let filteredProducts = [...productsData];
 let currentPage = 1;
 const ITEMS_PER_PAGE = 12;
-let currentLanguage = 'en';
+let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
 
 // --- Toast Notifications & API Logic ---
 function showToast(message, type = 'success') {
@@ -485,9 +485,8 @@ window.onclick = function (event) {
 }
 
 // Explicit Language Toggle Fix
-function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
-
+// Apply language to all elements on the page
+function applyLanguage() {
     // Update Visual Toggle State
     document.querySelectorAll('.lang-option').forEach(opt => {
         if (opt.dataset.lang === currentLanguage) {
@@ -518,6 +517,17 @@ function toggleLanguage() {
         renderProducts();
     }
 }
+
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+    localStorage.setItem('preferredLanguage', currentLanguage);
+    applyLanguage();
+}
+
+// On page load, apply saved language preference
+document.addEventListener('DOMContentLoaded', function() {
+    applyLanguage();
+});
 
 // --- Advanced Interactive UI ---
 let mouseX = window.innerWidth / 2;
