@@ -62,7 +62,26 @@ const customImages = {
     14: 'images/sheer_socks_1774350925271.png',
     15: 'images/velvet_tights_1774350954655.png',
     16: 'images/hemp_footcovers_1774350975283.png',
-    17: 'images/mesh_anklets_1774350997657.png'
+    17: 'images/mesh_anklets_1774350997657.png',
+    18: 'images/cashmere_socks_18.png',
+    19: 'images/tencel_socks_19.png',
+    20: 'images/khadi_socks_20.png',
+    21: 'images/terry_socks_21.png',
+    22: 'images/faux_leather_leggings_22.png',
+    23: 'images/silky_tights_23.png',
+    24: 'images/bow_stockings_24.png',
+    25: 'images/yoga_socks_25.png',
+    26: 'images/muslin_socks_26.png',
+    27: 'images/angora_socks_27.png',
+    28: 'images/printed_socks_28.png',
+    29: 'images/crepe_stocking_29.png',
+    30: 'images/sleep_socks_30.png',
+    31: 'images/organza_socks_31.png',
+    32: 'images/soybean_socks_32.png',
+    33: 'images/banana_socks_33.png',
+    34: 'images/modal_tights_34.png',
+    35: 'images/tweed_socks_35.jpg',
+    36: 'images/pique_socks_36.jpg'
 };
 
 productsData.forEach(p => {
@@ -232,7 +251,6 @@ function renderProducts() {
         card.innerHTML = `
             <div class="card-image-wrapper">
                 <img src="${product.img}" alt="${title}" class="product-img">
-                <div class="badge-cert">${product.cert.toUpperCase()}</div>
             </div>
             <div class="card-content">
                 <a href="product-details.html" class="product-title">${title}</a>

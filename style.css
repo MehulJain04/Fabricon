@@ -690,18 +690,6 @@ ul {
     transform: scale(1.05);
 }
 
-.badge-cert {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #27ae60;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
 
 .card-content {
     padding: 20px;
